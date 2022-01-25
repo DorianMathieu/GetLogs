@@ -1,3 +1,5 @@
+#Version de developpement du script
+
 function Copy-LogInTree{
     param(
         $FChoosenPath,
@@ -54,9 +56,9 @@ function Copy-LogInTree{
     return $FichierPresent
 }
  
-
 #$varCheminRepertoireScript = [System.IO.Path]::GetDirectoryName($MyInvocation.MyCommand.Definition) #On récupère le chemin du répertoire contenant ce script
-Write-host $varCheminRepertoireScript
+#Write-host $varCheminRepertoireScript
+Write-host = "/!\ Version de Developpement, ce script peut comporter des erreurs et fonctionnalités non finies /!\"
 
 $LogPath = Read-Host "Entrer le chemin de stockage des logs `n(Par defaut : D:\Program Files\NICE Systems\Log) " #
 
