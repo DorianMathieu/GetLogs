@@ -54,6 +54,7 @@ function Copy-LogInTree{
     return $FichierPresent
 }
  
+#Changement de branche
 
 #$varCheminRepertoireScript = [System.IO.Path]::GetDirectoryName($MyInvocation.MyCommand.Definition) #On récupère le chemin du répertoire contenant ce script
 Write-host $varCheminRepertoireScript
