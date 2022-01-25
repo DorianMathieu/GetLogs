@@ -39,8 +39,11 @@ function Copy-LogInTree{
             $FichierPresentDS = Copy-LogInTree -FChoosenPath $FChoosenPath\$($ElementEnfant.Name) -FLogPath $FLogPath\$($ElementEnfant.Name) #On relance la fonction avec le chemin du dossier que l'on a trouvé
             if ( $FichierPresentDS -eq 0)
             {
-                Write-Host "Suppression de $($ElementEnfant.FullName) Car dossier enfant vide !!`n"
-                Remove-Item -Path $FChoosenPath\$($ElementEnfant.Name)
+                if((Get-ChildItem -path $FChoosenPath\$($ElementEnfant.Name)).Count -eq 0)
+                {
+                    Write-Host "Suppression de $($ElementEnfant.FullName) Car dossier enfant vide !!`n"
+                    Remove-Item -Path $FChoosenPath\$($ElementEnfant.Name) -Confirm:$false
+                }
             }
             $FichierPresent = $FichierPresentDS -or $FichierPresent
             
