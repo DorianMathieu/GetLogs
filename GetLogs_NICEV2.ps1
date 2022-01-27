@@ -1,3 +1,5 @@
+#Version de principale du script
+
 function Copy-LogInTree{
     param(
         $FChoosenPath,
@@ -16,7 +18,7 @@ function Copy-LogInTree{
 
             if($ElementEnfant.LastWriteTime.date -eq $ChoosenDate)
             {
-                Write-Host "Copie du Fichier :$FLogPath\$($ElementEnfant.Name)`n"
+                #Write-Host "Copie du Fichier :$FLogPath\$($ElementEnfant.Name)`n"
                 Copy-Item $ElementEnfant.FullName -Destination $FChoosenPath
                 #compteur_copieF++
                 $FichierPresent = $true
@@ -27,7 +29,7 @@ function Copy-LogInTree{
             
             if((Test-Path "$FChoosenPath\$($ElementEnfant.Name)") -ne $true ) #Si l'élement est pas déjà dans le dossier de destination
             {
-                Write-Host "Copie du Dossier :$FLogPath\$($ElementEnfant.Name)`n"
+                #Write-Host "Copie du Dossier :$FLogPath\$($ElementEnfant.Name)`n"
                 Copy-Item $ElementEnfant.FullName -Destination $FChoosenPath
             }
             else 
@@ -41,7 +43,7 @@ function Copy-LogInTree{
             {
                 if((Get-ChildItem -path $FChoosenPath\$($ElementEnfant.Name)).Count -eq 0)
                 {
-                    Write-Host "Suppression de $($ElementEnfant.FullName) Car dossier enfant vide !!`n"
+                    #Write-Host "Suppression de $($ElementEnfant.FullName) Car dossier enfant vide !!`n"
                     Remove-Item -Path $FChoosenPath\$($ElementEnfant.Name) -Confirm:$false
                 }
             }
@@ -57,7 +59,8 @@ function Copy-LogInTree{
 #Changement de branche
 
 #$varCheminRepertoireScript = [System.IO.Path]::GetDirectoryName($MyInvocation.MyCommand.Definition) #On récupère le chemin du répertoire contenant ce script
-Write-host $varCheminRepertoireScript
+#Write-host $varCheminRepertoireScript
+
 
 $LogPath = Read-Host "Entrer le chemin de stockage des logs `n(Par defaut : D:\Program Files\NICE Systems\Log) " #
 
